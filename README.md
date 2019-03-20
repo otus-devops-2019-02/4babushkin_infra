@@ -35,3 +35,5 @@ bastion_IP = 35.205.160.30
 someinternalhost_IP = 10.132.0.3
 ```
 
+Валидный сертификат https https://35.205.160.30.xip.io/
+

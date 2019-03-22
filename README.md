@@ -34,7 +34,7 @@ Host someinternalhost
 Валидный сертификат https https://35.205.160.30.xip.io/
 
 
-##gcloud
+## gcloud
 
 Создание инстанса :
 ```bash
@@ -62,7 +62,7 @@ gcloud compute instances create reddit-app\
 ```
 
 
-#firewall
+## firewall
 Создание правила в файрволе:
 ```bash
 gcloud compute firewall-rules create default-puma-server \

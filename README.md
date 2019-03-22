@@ -78,6 +78,6 @@ gcloud compute firewall-rules create default-puma-server \
 bastion_IP = 35.205.160.30
 someinternalhost_IP = 10.132.0.3
 
-testapp_IP = 34.76.135.9
+testapp_IP = 35.205.160.30
 testapp_port = 9292
 ```

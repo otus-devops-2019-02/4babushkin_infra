@@ -1,9 +1,9 @@
 {
   "variables":{
-    "project_id":"none",
-    "zone": "europe-west1-d",
-    "machine_type": "f1-micro",
-    "source_image": "ubuntu-1604-xenial-v20190306",
+    "project_id":"",
+    "zone": "",
+    "machine_type": "",
+    "source_image": "",
     "tags": "puma-server"
   },
   
@@ -15,7 +15,7 @@
     "source_image": "{{ user `source_image` }}",
     "zone": "{{ user `zone` }}",
     "machine_type": "{{ user `machine_type` }}",
-    "tags": "{{ user `puma-server` }}",
+    "tags":"{{ user `tags` }}",
     "ssh_username": "forbabushkin",
     "disk_size": "10",
     "disk_type": "pd-standard"

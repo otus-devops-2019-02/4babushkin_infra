@@ -1,0 +1,47 @@
+{
+  "variables":{
+    "project_id":"",
+    "zone": "",
+    "machine_type": "",
+    "source_image": "",
+    "tags": "puma-server"
+  },
+  
+  "builders": [
+    {
+    "type": "googlecompute",
+    "project_id": "{{ user `project_id` }}",
+    "image_name": "reddit-full-{{timestamp}}",
+    "source_image": "{{ user `source_image` }}",
+    "zone": "{{ user `zone` }}",
+    "machine_type": "{{ user `machine_type` }}",
+    "tags":"{{ user `tags` }}",
+    "ssh_username": "{{ user `ssh_username` }}",
+    "disk_size": "10",
+    "disk_type": "pd-standard"
+    }
+  ],
+  "provisioners": [
+    {
+      "type": "shell",
+      "script": "scripts/install_ruby.sh",
+      "execute_command": "sudo {{.Path}}"
+    },
+    {
+      "type": "shell",
+      "script": "scripts/install_mongodb.sh",
+      "execute_command": "sudo {{.Path}}"
+    },
+    {
+      "type": "file",
+      "source": "puma.service",
+      "destination": "/home/{{ user `ssh_username` }}/puma.service"
+    },
+    {
+      "type": "shell",
+      "script": "scripts/deploy.sh",
+      "execute_command": "sudo {{.Path}} {{ user `ssh_username` }}"
+    }
+    
+]
+}

@@ -1,83 +1,31 @@
 # 4babushkin_infra
 
-Подключение к bastion:
-```console
-ssh -i ~/.ssh/forbabushkin forbabushkin@35.205.160.30
-```
+## создания образа VM при помощи Packer
 
-Подключение к someinternalhost одной командой (сквозное подключение):
-```console
-ssh -t -i ~/.ssh/forbabushkin -A forbabushkin@35.205.160.30 ssh 10.132.0.3
-```
+ 1) Создал packer шаблон ubuntu16.json
+ 2) параметризировал созданный шаблон, используя пользовательские переменные variables.json
+ 3) Создал образы:
 
-Вариант решения для подключения из консоли при помощи команды вида ssh someinternalhost
-Внести в ~/.ssh/config следующие настройки:
+  Создаем базовый образ reddit-base (ruby mongo)
+  ```
+  packer build --var-file variables.json ubuntu16.json
+  ```
 
-<pre>
-Host bastion
-    HostName 35.205.160.30
-    User forbabushkin
-    ForwardAgent yes
-    IdentityFile ~/.ssh/forbabushkin
+  Создаем фулл образ reddit-full (ruby mongo app)
+  ```
+  packer build --var-file variables.json immutable.json
+  ```
 
-Host someinternalhost
-    HostName 10.132.0.3
-    User forbabushkin
-    IdentityFile ~/.ssh/forbabushkin
-    ProxyCommand ssh bastion -W %h:%p
-</pre>
-
-После этого можно подключаться к someinternalhost через baston коммандой:
-`ssh someinternalhost`
-
-
-Валидный сертификат https https://35.205.160.30.xip.io/
-
-
-## gcloud
-
-Создание инстанса :
-```bash
-gcloud compute instances create reddit-app\
-  --boot-disk-size=10GB \
-  --image-family ubuntu-1604-lts \
-  --image-project=ubuntu-os-cloud \
-  --machine-type=g1-small \
+ 4) Для автомотического создания инстанса create-reddit-vm.sh
+  
+  ```sh
+  gcloud compute instances create reddit-full \
+  --image=reddit-full-1553653135 \
   --tags puma-server \
   --restart-on-failure \
-  --metadata-from-file startup-script=./startup_script.sh
-```
+  --machine-type=f1-micro \
+  ```
+
+проверить можно тут http://146.148.24.75:9292
 
 
-Create instans with scrypt url
-```bash
-gcloud compute instances create reddit-app\
-  --boot-disk-size=10GB \
-  --image-family ubuntu-1604-lts \
-  --image-project=ubuntu-os-cloud \
-  --machine-type=g1-small \
-  --tags puma-server \
-  --restart-on-failure \
-  --metadata startup-script-url=https://gist.githubusercontent.com/4babushkin/61b7790b24f2580e3c5dd53d11548a17/raw/23914173d002d606e195eb7ebd6951b5d12583a3/startup_script.sh
-```
-
-
-## firewall
-Создание правила в файрволе:
-```bash
-gcloud compute firewall-rules create default-puma-server \
---direction=INGRESS \
---priority=1000 \
---network=default \
---action=ALLOW --rules=tcp:9292 \
---source-ranges=0.0.0.0/0 \
---target-tags=puma-server
-```
-
-```conf
-bastion_IP = 35.205.160.30
-someinternalhost_IP = 10.132.0.3
-
-testapp_IP = 35.205.160.30
-testapp_port = 9292
-```

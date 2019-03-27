@@ -6,7 +6,7 @@ After=network.target
 Type=simple
 User=forbabushkin
 WorkingDirectory=/home/forbabushkin/reddit/
-ExecStart=/var/lib/gems/2.3.0/gems/puma-3.10.0/bin/puma -C /var/lib/gems/2.3.0/gems/puma-3.10.0/lib/puma.rb
+ExecStart=/usr/local/bin/puma
 TimeoutSec=15
 Restart=always
 

@@ -4,7 +4,8 @@
     "zone": "",
     "machine_type": "",
     "source_image": "",
-    "tags": "puma-server"
+    "tags": "puma-server",
+    "ssh_username": ""
   },
   
   "builders": [

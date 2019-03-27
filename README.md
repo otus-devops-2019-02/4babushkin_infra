@@ -18,11 +18,14 @@
 
  4) Для автомотического создания инстанса create-reddit-vm.sh
   
-  ```bash
+  ```sh
   gcloud compute instances create reddit-full \
-  --image=reddit-full-1553585716 \
+  --image=reddit-full-1553653135 \
   --tags puma-server \
   --restart-on-failure \
+  --machine-type=f1-micro \
   ```
+
+проверить можно тут http://146.148.24.75:9292
 
 

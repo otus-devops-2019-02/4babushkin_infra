@@ -5,10 +5,11 @@ echo "Копируем код приложения"
 git clone -b monolith https://github.com/express42/reddit.git
 echo "Устанавливаем зависимости приложения"
 cd reddit && bundle install
-//puma -d
+#puma -d
 
 mv /home/$1/puma.service /etc/systemd/system/puma.service
-systemctl start puma
+#systemctl start puma
+systemctl daemon-reload
 systemctl enable puma
 echo "...complete."
 

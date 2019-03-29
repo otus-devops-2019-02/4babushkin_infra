@@ -1,6 +1,29 @@
 # 4babushkin_infra
 
-## создания образа VM при помощи Packer
+## HW-8
+
+[![Build Status](https://travis-ci.com/otus-devops-2019-02/4babushkin_infra.svg?branch=terraform-1)](https://travis-ci.com/otus-devops-2019-02/4babushkin_infra)
+
+### Основное задание:
+* Установил terraform
+* Создал конфигурационные файлы terrraform
+* Определил input переменную для приватного ключа и зоны 
+* Определил output переменную с внешним IP созданной виртуальной машины (использовал outputs.tf)
+* Отформатировал все конфигурационные файлы с помощью команды
+```
+terraform fmt -write=true
+```
+* Создал файл terraform.tfvars.example
+
+### Дополнительное задание 1:
+* Добавил ssh ключи пользователей в метаданные проекта google_compute_project_metadata_item 
+* После добавления appuser_web через веб интерфейсе, при выполнении `terraform apply`, пользователь удаляется
+
+
+
+
+## HW-7
+### создания образа VM при помощи Packer
 
  1) Создал packer шаблон ubuntu16.json
  2) параметризировал созданный шаблон, используя пользовательские переменные variables.json

@@ -18,7 +18,8 @@
     "tags":"{{ user `tags` }}",
     "ssh_username": "{{ user `ssh_username` }}",
     "disk_size": "10",
-    "disk_type": "pd-standard"
+    "disk_type": "pd-standard",
+    "image_family": "reddit-full"
     }
   ],
   "provisioners": [

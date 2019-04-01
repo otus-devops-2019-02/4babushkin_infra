@@ -25,8 +25,9 @@ variable disk_image {
 
 variable zone {
   description = "Zone"
-  default     = "europe-west1-d"
+  default     = "europe-west1"
 }
+
 variable public_key_path_appuser1 {
   description = "Path to the public key used for ssh access for appuser1"
 }
@@ -38,3 +39,9 @@ variable public_key_path_appuser2 {
 variable public_key_path_appuser3 {
   description = "Path to the public key used for ssh access for appuser1"
 }
+
+variable count {
+  description = "Number of puma-servers"
+  default     = 1
+}
+

@@ -1,6 +1,6 @@
 # 4babushkin_infra
 
-## HW-8
+## HW-8 terraform-1
 
 [![Build Status](https://travis-ci.com/otus-devops-2019-02/4babushkin_infra.svg?branch=terraform-1)](https://travis-ci.com/otus-devops-2019-02/4babushkin_infra)
 
@@ -16,9 +16,24 @@ terraform fmt -write=true
 * Создал файл terraform.tfvars.example
 
 ### Дополнительное задание 1:
-* Добавил ssh ключи пользователей в метаданные проекта google_compute_project_metadata_item 
+* Добавил ssh ключи пользователей в метаданные проекта google_compute_project_metadata
 * После добавления appuser_web через веб интерфейсе, при выполнении `terraform apply`, пользователь удаляется
 
+### Дополнительное задание 2:
+* создан фаил lb.tf с балансировщиком (Проблемма в том что у каждого инстанса своя БД.)
+* Добавлена переменаня count -  количество запускаемх инстансов
+
+Пример Output
+```
+Outputs:
+
+app_external_ip = [
+    35.187.97.63,
+    34.76.161.148
+]
+app_frontend_ip = 35.195.23.92
+
+```
 
 
 

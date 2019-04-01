@@ -9,14 +9,15 @@ provider "google" {
 
   # ID проекта
   project = "${var.project}"
-  region  = "europe-west1-d"
+  region  = "europe-west1"
 }
 
 resource "google_compute_instance" "app" {
-  name         = "reddit-app"
+  name         = "reddit-app-${count.index}"
   machine_type = "f1-micro"
   zone         = "${var.zone}"
   tags         = ["reddit-app"]
+  count        = "${var.count}"
 
   # определение загрузочного диска
   boot_disk {
@@ -39,7 +40,6 @@ resource "google_compute_instance" "app" {
     ssh-keys = "appuser:${file(var.public_key_path)}"
   }
 
- 
   connection {
     type  = "ssh"
     user  = "appuser"
@@ -59,15 +59,16 @@ resource "google_compute_instance" "app" {
   }
 }
 
-resource "google_compute_project_metadata_item" "default" {
-  key   = "ssh-keys"
-  value = "appuser1:${file(var.public_key_path)}\nappuser2:${file(var.public_key_path)}\nappuser3:${file(var.public_key_path)}"
-}
-# resource "google_compute_project_metadata" "ssh_keys_appusers" {
-#   metadata {
-#   ssh_keys = "appuser1:${file(var.public_key_path_appuser1)}\nappuser2:${file(var.public_key_path_appuser2)}"
-#   }
-# }
+#resource "google_compute_project_metadata_item" "default" {
+#  key   = "ssh-keys"
+#  value = "appuser1:${file(var.public_key_path)}\nappuser2:${file(var.public_key_path)}\nappuser3:${file(var.public_key_path)}"
+#}
+
+ resource "google_compute_project_metadata" "ssh_keys_appusers" {
+   metadata {
+   ssh_keys = "appuser1:${file(var.public_key_path_appuser1)}\nappuser2:${file(var.public_key_path_appuser2)}\nappuser3:${file(var.public_key_path)}"
+   }
+ }
 resource "google_compute_firewall" "firewall_puma" {
   name = "allow-puma-default"
 

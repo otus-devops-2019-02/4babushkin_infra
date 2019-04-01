@@ -11,7 +11,7 @@
 * Определил output переменную с внешним IP созданной виртуальной машины (использовал outputs.tf)
 * Отформатировал все конфигурационные файлы с помощью команды
 ```
-terraform fmt -write=true
+terraform fmt
 ```
 * Создал файл terraform.tfvars.example
 

@@ -44,4 +44,3 @@ variable count {
   description = "Number of puma-servers"
   default     = 1
 }
-

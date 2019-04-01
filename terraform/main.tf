@@ -64,11 +64,12 @@ resource "google_compute_instance" "app" {
 #  value = "appuser1:${file(var.public_key_path)}\nappuser2:${file(var.public_key_path)}\nappuser3:${file(var.public_key_path)}"
 #}
 
- resource "google_compute_project_metadata" "ssh_keys_appusers" {
-   metadata {
-   ssh_keys = "appuser1:${file(var.public_key_path_appuser1)}\nappuser2:${file(var.public_key_path_appuser2)}\nappuser3:${file(var.public_key_path)}"
-   }
- }
+resource "google_compute_project_metadata" "ssh_keys_appusers" {
+  metadata {
+    ssh_keys = "appuser1:${file(var.public_key_path_appuser1)}\nappuser2:${file(var.public_key_path_appuser2)}\nappuser3:${file(var.public_key_path)}"
+  }
+}
+
 resource "google_compute_firewall" "firewall_puma" {
   name = "allow-puma-default"
 

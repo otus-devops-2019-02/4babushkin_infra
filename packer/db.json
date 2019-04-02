@@ -1,0 +1,33 @@
+{
+  "variables":{
+    "project_id":"",
+    "zone": "",
+    "machine_type": "",
+    "source_image": "",
+    "tags": "puma-server",
+    "ssh_username": ""
+  },
+  
+  "builders": [
+    {
+    "type": "googlecompute",
+    "project_id": "{{ user `project_id` }}",
+    "image_name": "reddit-db-base-{{timestamp}}",
+    "source_image": "{{ user `source_image` }}",
+    "zone": "{{ user `zone` }}",
+    "machine_type": "{{ user `machine_type` }}",
+    "tags":"{{ user `tags` }}",
+    "ssh_username": "forbabushkin",
+    "disk_size": "10",
+    "disk_type": "pd-standard",
+    "image_family": "reddit-db-base"
+    }
+  ],
+  "provisioners": [
+    {
+      "type": "shell",
+      "script": "scripts/install_mongodb.sh",
+      "execute_command": "sudo {{.Path}}"
+    }
+]
+}

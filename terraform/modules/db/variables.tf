@@ -12,3 +12,8 @@ variable zone {
   description = "Zone"
   default     = "europe-west1"
 }
+
+variable machine_type {
+  description = "Machine type"
+  default     = "f1-micro"
+}

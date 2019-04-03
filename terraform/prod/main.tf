@@ -1,6 +1,6 @@
 terraform {
   # Версия terraform
-  required_version = "0.11.11"
+  # required_version = "0.11.11"
 }
 
 provider "google" {
@@ -30,6 +30,16 @@ module "vpc" {
   source        = "../modules/vpc"
   source_ranges = ["46.182.129.84/32"]
 }
+
+# resource "google_storage_bucket" "state_bucket" {
+#   name = "terraform2-prod"
+# }
+
+# resource "google_storage_bucket_acl" "state-store-acl" {
+#   bucket         = "${google_storage_bucket.state_bucket.name}"
+#   predefined_acl = "publicreadwrite"
+# }
+
 
 #provisioner "file" {
 #  source      = "files/puma.service"

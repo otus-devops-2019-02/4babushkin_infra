@@ -1,6 +1,25 @@
 # 4babushkin_infra
 
-## HW-8 terraform-1
+## Lesson-09 HW terraform-2
+
+[![Build Status](https://travis-ci.com/otus-devops-2019-02/4babushkin_infra.svg?branch=terraform-2)](https://travis-ci.com/otus-devops-2019-02/4babushkin_infra)
+
+### Основное задание:
+* Определиk ресурс файервола и импортировал существующую инфраструктоуру файервола для 22 порта
+* Создал два образа reddit-db-base и reddit-app-base
+* Разбил конфиг main.tf на 2 конфига app.tf и db.tf
+* Разбил конфигурацию на модули
+* Создал и проверил модул vpc который определяет настройки файервола в рамках сети
+* Создал две среды Stage и Prod
+* Используя модуль [storage-bucket](https://registry.terraform.io/modules/SweetOps/storage-bucket/google/0.2.0) из ресстра модулей создал два баккета `"terraform2-prod", "terraform2-stage"`
+
+### Дополнительное задание 1:
+* настроил и првоерил хранение стейт файла в удаленном бекенде для окружений stage и prod
+
+### Дополнительное задание 2:
+* 
+
+## Lesson-08 HW terraform-1
 
 [![Build Status](https://travis-ci.com/otus-devops-2019-02/4babushkin_infra.svg?branch=terraform-1)](https://travis-ci.com/otus-devops-2019-02/4babushkin_infra)
 
@@ -37,7 +56,7 @@ app_frontend_ip = 35.195.23.92
 
 
 
-## HW-7
+## Lesson-07 HW packer
 ### создания образа VM при помощи Packer
 
  1) Создал packer шаблон ubuntu16.json

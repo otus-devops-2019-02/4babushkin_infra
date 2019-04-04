@@ -1,6 +1,5 @@
 terraform {
-  # Версия terraform
-  # required_version = "0.11.11"
+  # Версия terraform  # required_version = "0.11.11"
 }
 
 provider "google" {
@@ -12,42 +11,34 @@ provider "google" {
   region  = "${var.region}"
 }
 
-module "app" {
-  source          = "../modules/app"
-  public_key_path = "${var.public_key_path}"
-  zone            = "${var.zone}"
-  app_disk_image  = "${var.app_disk_image}"
+module "db" {
+  source                     = "../modules/db"
+  public_key_path            = "${var.public_key_path}"
+  zone                       = "${var.zone}"
+  db_disk_image              = "${var.db_disk_image}"
+  network_name               = "default"
+  firewall_db                = "allow-mongo-default"
+  db_allow_ports             = ["27017"]
+  allow_source_tags_instance = ["reddit-app"]
+  prefix_name_instance       = "prod"
 }
 
-module "db" {
-  source          = "../modules/db"
-  public_key_path = "${var.public_key_path}"
-  zone            = "${var.zone}"
-  db_disk_image   = "${var.db_disk_image}"
+module "app" {
+  source                   = "../modules/app"
+  public_key_path          = "${var.public_key_path}"
+  zone                     = "${var.zone}"
+  app_disk_image           = "${var.app_disk_image}"
+  network_name             = "default"
+  application_firewall     = "allow-puma-default"
+  app_firewall_source_port = ["9292"]
+  app_firewall_source_ip   = ["0.0.0.0/0"]
+  prefix_name_instance     = "prod"
+  private_key_path         = "~/.ssh/appuser"
+  mongo_ip                 = "${module.db.db_local_ip}"
+  count                    = 2
 }
 
 module "vpc" {
   source        = "../modules/vpc"
   source_ranges = ["46.182.129.84/32"]
 }
-
-# resource "google_storage_bucket" "state_bucket" {
-#   name = "terraform2-prod"
-# }
-
-# resource "google_storage_bucket_acl" "state-store-acl" {
-#   bucket         = "${google_storage_bucket.state_bucket.name}"
-#   predefined_acl = "publicreadwrite"
-# }
-
-
-#provisioner "file" {
-#  source      = "files/puma.service"
-#  destination = "/tmp/puma.service"
-#}
-
-
-#provisioner "remote-exec" {
-#  script = "files/deploy.sh"
-#}
-

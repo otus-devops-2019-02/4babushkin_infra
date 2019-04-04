@@ -3,5 +3,4 @@ terraform {
     bucket = "terraform2-stage"
     prefix = "terraform/state-stage"
   }
-
 }

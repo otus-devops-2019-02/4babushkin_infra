@@ -3,5 +3,4 @@ terraform {
     bucket = "terraform2-prod"
     prefix = "terraform/state-prod"
   }
-
 }

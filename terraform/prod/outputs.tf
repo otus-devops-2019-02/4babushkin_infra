@@ -6,7 +6,6 @@ output "db_external_ip" {
   value = "${module.db.db_external_ip}"
 }
 
-# output "app_frontend_ip" {
-#   value = "${google_compute_forwarding_rule.default.ip_address}"
-# }
-
+output "db_local_ip" {
+  value = "${module.db.db_local_ip}"
+}

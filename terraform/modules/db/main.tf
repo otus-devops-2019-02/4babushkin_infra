@@ -1,5 +1,5 @@
 resource "google_compute_instance" "db" {
-  name         = "reddit-db-${count.index+1}"
+  name         = "reddit-db-${var.prefix_name_instance}-${count.index+1}"
   machine_type = "${var.machine_type}"
   zone         = "${var.zone}"
   tags         = ["reddit-db"]
@@ -11,7 +11,7 @@ resource "google_compute_instance" "db" {
   }
 
   network_interface {
-    network       = "default"
+    network       = "${var.network_name}"
     access_config = {}
   }
 
@@ -22,14 +22,14 @@ resource "google_compute_instance" "db" {
 
 # Правило firewall
 resource "google_compute_firewall" "firewall_mongo" {
-  name    = "allow-mongo-default"
-  network = "default"
+  name    = "${var.firewall_db}"
+  network = "${var.network_name}"
 
   allow {
     protocol = "tcp"
-    ports    = ["27017"]
+    ports    = "${var.db_allow_ports}"
   }
 
   target_tags = ["reddit-db"]
-  source_tags = ["reddit-app"]
+  source_tags = "${var.allow_source_tags_instance}"
 }

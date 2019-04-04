@@ -17,7 +17,26 @@
 * настроил и првоерил хранение стейт файла в удаленном бекенде для окружений stage и prod
 
 ### Дополнительное задание 2:
-* 
+* Пересобрал образ reddit-db-base с разрешением подлючения к базе со всех ip
+* Сделал деплой прилождения в модуле app
+* Добавил балансировщик к модулю app `count` - количество инстансов
+```
+Outputs:
+
+app_external_ip = [
+    35.187.165.115,
+    34.76.236.136
+]
+app_frontend_ip = 35.205.146.159
+db_external_ip = 35.195.227.86
+db_local_ip = 10.132.0.3
+```
+
+### info links
+  [How to set environment variable in systemd service](https://serverfault.com/questions/413397/how-to-set-environment-variable-in-systemd-service)
+  [Template Provider](https://www.terraform.io/docs/providers/template/index.html)
+
+
 
 ## Lesson-08 HW terraform-1
 

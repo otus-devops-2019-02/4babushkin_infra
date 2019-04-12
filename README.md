@@ -1,5 +1,14 @@
 # 4babushkin_infra
 
+## Lesson-10 HW ansible-1
+
+[![Build Status](https://travis-ci.com/otus-devops-2019-02/4babushkin_infra.svg?branch=ansible-1)](https://travis-ci.com/otus-devops-2019-02/4babushkin_infra)
+
+### Основное задание:
+* При запуске плейбука `nsible-playbook clone.yml` плейбук выполнился без ошибок но изменений не произошло, потому что каталог /home/appuser/reddit уже был на appserver.
+* При удалении `rm -rf ~/reddit` и запуске плейбука `nsible-playbook clone.yml` плейбук выполнился без ошибок и склонировал наш репозиторий 
+
+
 ## Lesson-09 HW terraform-2
 
 [![Build Status](https://travis-ci.com/otus-devops-2019-02/4babushkin_infra.svg?branch=terraform-2)](https://travis-ci.com/otus-devops-2019-02/4babushkin_infra)

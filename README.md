@@ -1,5 +1,23 @@
 # 4babushkin_infra
 
+## Lesson-11 HW ansible-2
+
+[![Build Status](https://travis-ci.com/otus-devops-2019-02/4babushkin_infra.svg?branch=ansible-2)](https://travis-ci.com/otus-devops-2019-02/4babushkin_infra)
+
+### Основное задание:
+* `ansible-playbook reddit_app.yml --check --limit db` "пробный прогон" плейбука c ограничиваем группу хостов
+* Применим наш плейбук `ansible-playbook reddit_app.yml --limit db`
+* `ansible-playbook reddit_app.yml --check --limit app --tags app-tag` "пробный прогон" плейбука c ограничиваем группу хостов
+* Применим наш плейбук с тегом `app-tag` для группы хостов app `ansible-playbook reddit_app.yml --limit app --tags app-tag`
+* Выполняем деплой `ansible-playbook reddit_app.yml --limit app --tags deploy-tag`
+
+
+
+
+### Дополнительное задание 1:
+
+
+
 ## Lesson-10 HW ansible-1
 
 [![Build Status](https://travis-ci.com/otus-devops-2019-02/4babushkin_infra.svg?branch=ansible-1)](https://travis-ci.com/otus-devops-2019-02/4babushkin_infra)

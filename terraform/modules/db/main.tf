@@ -18,12 +18,26 @@ resource "google_compute_instance" "db" {
   metadata {
     ssh-keys = "appuser:${file(var.public_key_path)}"
   }
+#  provisioner "remote-exec" {
+#    inline = [
+#      "sudo sed -i 's/bindIp: 127.0.0.1/bindIp: 0.0.0.0/g' /etc/mongod.conf",
+#      "sudo systemctl restart mongod",
+#    ]
+#
+#    connection {
+#      type        = "ssh"
+#      user        = "appuser"
+#      agent       = "false"
+#      private_key = "${file(var.private_key_path)}"
+#    }
+#  }
 }
 
 # Правило firewall
 resource "google_compute_firewall" "firewall_mongo" {
   name    = "${var.firewall_db}"
-  network = "${var.network_name}"
+  network = "${var.network_name}" #доступ только в локальной сети
+  #network = "default" # если надо доcтуп отовсюду
 
   allow {
     protocol = "tcp"

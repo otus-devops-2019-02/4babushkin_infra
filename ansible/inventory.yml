@@ -3,9 +3,11 @@
     hosts:
       appserver:
     vars:
-      ansible_host: 104.155.100.109
+      ansible_host: 35.233.16.228
   db:
     hosts:
       dbserver:
     vars:
-      ansible_host: 35.233.16.228
+      ansible_host: 35.205.24.79
+
+

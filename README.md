@@ -13,15 +13,14 @@
 * Несколько плейбуков `app.yml db.yml deploy.yml`. В `site.yml` импортируем их. Запуск `ansible-playbook site.yml`
 
 ### Дополнительное задание *:
-* Пока не сделал
+* Смог нагуглить `plugin: gcp_compute` Потому что все работает из коробки. В других динамических не смог разобратся.
+* Полная детализация инвентори `ansible-inventory -i inventory.gcp.yml --list`
+- Инфо [How to Use Ansible Gcp compute inventory plugin](http://matthieure.me/2018/12/31/ansible_inventory_plugin.html)
 
 ### Основное задание 2: Провижининг в Packer
 * Создал два плейбука аналогичные bash-скриптам которые используются в Packer `packer_app.yml` - устанавливает Ruby и Bundler и `packer_db.yml` - добавляет репозиторий MongoDB
 * Интегрировал Ansible в Packer и собрал новые образы
-* Проверил работу 
-
-
-
+* Проверил работу `ansible-playbook site.yml --check` затем применил `ansible-playbook site.yml`
 
 
 

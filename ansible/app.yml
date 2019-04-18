@@ -1,10 +1,12 @@
 ############ Configure App ############
 - name: Configure App
-  hosts: app
+  #hosts: app
+  hosts: reddit_app
   #tags: app-tag
   become: true
   vars:
-   db_host: 10.132.0.40
+   #db_host: "123.123.123.123"
+   db_host: "{{ hostvars[groups['reddit_db'][0]]['networkInterfaces'][0]['networkIP'] }}"
   tasks:
     - name: Add unit file for Puma
       copy:
@@ -18,12 +20,15 @@
         dest: /home/appuser/db_config
         owner: appuser
         group: appuser
-
+      
+    
     - name: enable puma
       systemd: name=puma enabled=yes
+      
 
   handlers:
   - name: reload puma
     systemd: 
       name: puma
       state: reloaded
+ 

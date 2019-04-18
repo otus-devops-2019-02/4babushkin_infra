@@ -1,6 +1,7 @@
 ############ Configure MongoDB ############
 - name: Configure MongoDB
-  hosts: db
+  # hosts: db
+  hosts: reddit_db
   #tags: db-tag
   become: true
   vars:

@@ -1,0 +1,16 @@
+# inventory.compute.gcp.yml
+plugin: gcp_compute             # name the plugin you want to use (use `ansible-doc -t inventory -l` to list available plugins)
+projects:
+  - infra-235006            # Id of your gcp project
+filters: []
+# hostnames:                # A list of options that describe the ordering for which hostnames should be assigned. Currently supported hostnames are 'public_ip', 'private_ip', or 'name'.
+#   - public_ip
+#   - name
+scopes:
+  - https://www.googleapis.com/auth/gcp-compute
+auth_kind: serviceaccount       # gcp authentication kind. with service account you should provide the service account json key file to authenticate
+service_account_file: ../../infra-235006-c980e16d1694.json   # Service account json keyfile
+groups:
+  reddit_app: "'reddit-app-' in name"
+  reddit_db: "'reddit-db-' in name"
+

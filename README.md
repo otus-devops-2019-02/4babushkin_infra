@@ -1,5 +1,30 @@
 # 4babushkin_infra
 
+## Lesson-11 HW ansible-2
+
+[![Build Status](https://travis-ci.com/otus-devops-2019-02/4babushkin_infra.svg?branch=ansible-2)](https://travis-ci.com/otus-devops-2019-02/4babushkin_infra)
+
+### Основное задание 1:
+* `ansible-playbook reddit_app.yml --check --limit db` "пробный прогон" плейбука c ограничиваем группу хостов
+* Применим наш плейбук `ansible-playbook reddit_app.yml --limit db`
+* `ansible-playbook reddit_app.yml --check --limit app --tags app-tag` "пробный прогон" плейбука c ограничиваем группу хостов
+* Один плейбук, несколько сценариев. Применим наш плейбук с тегом `app-tag` для группы хостов app `ansible-playbook reddit_app.yml --limit app --tags app-tag`
+* Выполняем деплой `ansible-playbook reddit_app.yml --limit app --tags deploy-tag`
+* Несколько плейбуков `app.yml db.yml deploy.yml`. В `site.yml` импортируем их. Запуск `ansible-playbook site.yml`
+
+### Дополнительное задание *:
+* Смог нагуглить `plugin: gcp_compute` Потому что все работает из коробки. В других динамических не смог разобратся.
+* Полная детализация инвентори `ansible-inventory -i inventory.gcp.yml --list`
+- Инфо [How to Use Ansible Gcp compute inventory plugin](http://matthieure.me/2018/12/31/ansible_inventory_plugin.html)
+
+### Основное задание 2: Провижининг в Packer
+* Создал два плейбука аналогичные bash-скриптам которые используются в Packer `packer_app.yml` - устанавливает Ruby и Bundler и `packer_db.yml` - добавляет репозиторий MongoDB
+* Интегрировал Ansible в Packer и собрал новые образы
+* Проверил работу `ansible-playbook site.yml --check` затем применил `ansible-playbook site.yml`
+
+
+
+
 ## Lesson-10 HW ansible-1
 
 [![Build Status](https://travis-ci.com/otus-devops-2019-02/4babushkin_infra.svg?branch=ansible-1)](https://travis-ci.com/otus-devops-2019-02/4babushkin_infra)

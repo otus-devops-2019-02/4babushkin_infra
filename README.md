@@ -1,5 +1,20 @@
 # 4babushkin_infra
 
+## Lesson-12 HW ansible-3
+
+[![Build Status](https://travis-ci.com/otus-devops-2019-02/4babushkin_infra.svg?branch=ansible-3)](https://travis-ci.com/otus-devops-2019-02/4babushkin_infra)
+
+### Основное задание 1:
+* Создал роли app db. `ansible-galaxy init app` и `ansible-galaxy init db`
+* Создал окружения stage prod и перенес в них файл `inventory`. теперь при запуске `ansible-playbook -i environments/prod/inventory deploy.yml` видно с каким окруженим работаем
+* Cконфигурировал окружения  stage и prod
+* Организовал плейбуки `playbooks`. Перенес то что не относится к текущей конфигурации в каталог `old`
+
+
+
+### Дополнительное задание *:
+
+
 ## Lesson-11 HW ansible-2
 
 [![Build Status](https://travis-ci.com/otus-devops-2019-02/4babushkin_infra.svg?branch=ansible-2)](https://travis-ci.com/otus-devops-2019-02/4babushkin_infra)

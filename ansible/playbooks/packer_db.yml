@@ -21,6 +21,6 @@
 
     - name: enable service mongodb and ensure it is not masked
       systemd:
-        name: mongodb
+        name: mongod
         enabled: yes
   

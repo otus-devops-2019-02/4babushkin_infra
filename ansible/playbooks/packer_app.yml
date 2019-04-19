@@ -1,6 +1,6 @@
 ############ Configure App ############
 - name: Install Ruby & Bundler for App
-  hosts: app
+  hosts: all
   #tags: app-tag
   become: true
   tasks:
@@ -9,7 +9,6 @@
         name: "{{ item }}"
         state: present
       with_items:
-      - python-apt
       - ruby-full
       - ruby-bundler
       - build-essential

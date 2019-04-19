@@ -9,7 +9,10 @@
 * Создал окружения stage prod и перенес в них файл `inventory`. теперь при запуске `ansible-playbook -i environments/prod/inventory deploy.yml` видно с каким окруженим работаем
 * Cконфигурировал окружения  stage и prod
 * Организовал плейбуки `playbooks`. Перенес то что не относится к текущей конфигурации в каталог `old`
-
+* Добавил в terraform открытие 80 порта. 
+* Установил роль jdauphant.nginx из Ansible Galaxy `ansible-galaxy install -r environments/stage/requirements.yml`. Добавил вызов роли `jdauphant.nginx` в плейбук app.yml. 
+* Применил `ansible-playbook playbooks/site.yml`. Теперь приложение доступно по 80 порту
+* Vault настроил ключ. Шифрую `ansible-vault encrypt environments/prod/credentials.yml` и `ansible-vault encrypt environments/stage/credentials.yml`
 
 
 ### Дополнительное задание *:

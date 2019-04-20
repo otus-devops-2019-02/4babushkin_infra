@@ -11,7 +11,7 @@
   notify: reload puma
 
 - name: Show id adress of mongodb
-  debug: 
+  debug:
     msg: "Ip of mongodb: {{ db_host }}"
 
 - name: Add config for DB connection

@@ -1,4 +1,4 @@
-############ Configure App ############
+---
 - name: Install Ruby & Bundler for App
   hosts: all
   #tags: app-tag
@@ -12,3 +12,4 @@
       - ruby-full
       - ruby-bundler
       - build-essential
+...

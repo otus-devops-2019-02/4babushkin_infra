@@ -1,7 +1,7 @@
- #db_host: "123.123.123.123"
- #db_host: "{{ hostvars[groups['reddit_db'][0]]['networkInterfaces'][0]['networkIP'] }}"
-db_host: 10.132.0.48
- 
+#db_host: "123.123.123.123"
+#db_host: 10.132.0.48
+db_host: "{{ hostvars[groups['db'][0]]['networkInterfaces'][0]['networkIP'] }}"
+
 nginx_sites:
   default:
     - listen 80

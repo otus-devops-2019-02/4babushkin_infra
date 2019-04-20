@@ -1,8 +1,6 @@
 ---
 - name: Configure App
   hosts: app
-  #hosts: reddit_app
-
   become: true
   #vars:
     #db_host: "123.123.123.123"

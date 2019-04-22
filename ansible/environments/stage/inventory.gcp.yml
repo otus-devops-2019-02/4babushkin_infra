@@ -1,0 +1,18 @@
+# inventory.compute.gcp.yml
+plugin: gcp_compute
+projects:
+  - infra-235006
+zones: # populate inventory with instances in these regions
+  - europe-west1-d
+filters: []
+# A list of options that describe the ordering for which hostnames should be assigned. Currently supported hostnames are 'public_ip', 'private_ip', or 'name'.
+# hostnames:
+#   - public_ip
+#   - name
+scopes:
+  - https://www.googleapis.com/auth/gcp-compute
+auth_kind: serviceaccount
+service_account_file: ../../infra-235006-c980e16d1694.json
+groups:
+  app: "'reddit-app-' in name"
+  db: "'reddit-db-' in name"

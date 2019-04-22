@@ -48,12 +48,13 @@ resource "google_compute_firewall" "firewall_puma" {
 
   allow {
     protocol = "tcp"
-    ports    = "${var.app_firewall_source_port}"
+    ports    = ["${var.app_firewall_source_port}", "80"]
   }
 
   source_ranges = "${var.app_firewall_source_ip}"
   target_tags   = ["reddit-app"]
 }
+
 
 data "template_file" "puma_service" {
   template = "${file("${path.module}/puma.service")}"

@@ -1,5 +1,23 @@
 # 4babushkin_infra
 
+## Lesson-12 HW ansible-3
+
+[![Build Status](https://travis-ci.com/otus-devops-2019-02/4babushkin_infra.svg?branch=ansible-3)](https://travis-ci.com/otus-devops-2019-02/4babushkin_infra)
+
+### Основное задание 1:
+* Создал роли app db. `ansible-galaxy init app` и `ansible-galaxy init db`
+* Создал окружения stage prod и перенес в них файл `inventory`. теперь при запуске `ansible-playbook -i environments/prod/inventory deploy.yml` видно с каким окруженим работаем
+* Cконфигурировал окружения  stage и prod
+* Организовал плейбуки `playbooks`. Перенес то что не относится к текущей конфигурации в каталог `old`
+* Добавил в terraform открытие 80 порта. 
+* Установил роль jdauphant.nginx из Ansible Galaxy `ansible-galaxy install -r environments/stage/requirements.yml`. Добавил вызов роли `jdauphant.nginx` в плейбук app.yml. 
+* Применил `ansible-playbook playbooks/site.yml`. Теперь приложение доступно по 80 порту
+* Vault настроил ключ. Шифрую `ansible-vault encrypt environments/prod/credentials.yml` и `ansible-vault encrypt environments/stage/credentials.yml`
+
+
+### Дополнительное задание *:
+
+
 ## Lesson-11 HW ansible-2
 
 [![Build Status](https://travis-ci.com/otus-devops-2019-02/4babushkin_infra.svg?branch=ansible-2)](https://travis-ci.com/otus-devops-2019-02/4babushkin_infra)

@@ -48,24 +48,11 @@ resource "google_compute_firewall" "firewall_puma" {
 
   allow {
     protocol = "tcp"
-    ports    = "${var.app_firewall_source_port}"
+    ports    = ["${var.app_firewall_source_port}", "80"]
   }
 
   source_ranges = "${var.app_firewall_source_ip}"
   target_tags   = ["reddit-app"]
-}
-
-resource "google_compute_firewall" "http" {
-  name    = "default-firewall-http"
-  network = "default"
-
-  allow {
-    protocol = "tcp"
-    ports    = ["80"]
-  }
-
-  target_tags   = ["reddit-app"]
-  source_ranges = "${var.app_firewall_source_ip}"
 }
 
 

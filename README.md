@@ -14,7 +14,7 @@
 
 ### Основное задание 2: Тестирование роли
 * Использование виртуальной среды. Настройка: python 2.7  `pip install virtualenv`. `mkdir python-venv && cd python-venv`. `virtualenv env`. `source env/bin/activate`
-- `molecule create` - Создадать VM. `molecule converge` - прогнать тесты. `molecule list` - Посмотрим список созданных инстансов.
+- `molecule create` - Создадать VM. `molecule converge` - применить кофигурацию. `molecule list` - Посмотрим список созданных инстансов.
 - `molecule verify` - прогнать тесты
 - `molecule init scenario --scenario-name default -r db -d vagrant` - создает заготовку для роли **db** с тестами на основе cookiecutter-шаблона
 * Тест открытого порта
@@ -22,6 +22,8 @@
     def test_open_port(host):
     assert host.socket("tcp://0.0.0.0:27017").is_listening
   ```
+### Дополнительное задание *: TravisCI
+* не выполнил
 
 ## Lesson-12 HW ansible-3
 
@@ -38,7 +40,8 @@
 * Vault настроил ключ. Шифрую `ansible-vault encrypt environments/prod/credentials.yml` и `ansible-vault encrypt environments/stage/credentials.yml`
 
 
-### Дополнительное задание *:
+### Дополнительное задание *: 
+выполнил
 
 
 ## Lesson-11 HW ansible-2

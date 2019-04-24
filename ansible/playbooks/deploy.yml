@@ -12,7 +12,6 @@
         dest: "/home/{{ deploy_user }}/reddit"
         version: monolith # <-- Указываем нужную ветку
       notify: restart puma
-      
 
     - name: Bundle install
       bundler:
@@ -26,8 +25,7 @@
       name: puma
       daemon_reload: yes
       state: reloaded
-  
+
   - name: restart puma
     become: true
     systemd: name=puma state=restarted
-

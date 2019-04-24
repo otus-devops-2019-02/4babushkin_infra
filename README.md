@@ -1,5 +1,30 @@
 # 4babushkin_infra
 
+## Lesson-13 HW ansible-4
+
+[![Build Status](https://travis-ci.com/otus-devops-2019-02/4babushkin_infra.svg?branch=ansible-4)](https://travis-ci.com/otus-devops-2019-02/4babushkin_infra)
+
+### Основное задание 1:
+* [Установил Vagrant](https://www.vagrantup.com/downloads.html) а virtualbox уже была ))
+* Описал характеристики VMs в `Vagrantfile`. Команды `vagrant up`. `vagrant status`. `vagrant destroy` ...
+* Используя Ansible провижинер проверил работу ролей плейбуков `playbooks/site.yml`
+
+### Дополнительное задание *:
+* Настроил Vagrant для корректной работы проксирования приложения с помощью nginx
+
+### Основное задание 2: Тестирование роли
+* Использование виртуальной среды. Настройка: python 2.7  `pip install virtualenv`. `mkdir python-venv && cd python-venv`. `virtualenv env`. `source env/bin/activate`
+- `molecule create` - Создадать VM. `molecule converge` - применить кофигурацию. `molecule list` - Посмотрим список созданных инстансов.
+- `molecule verify` - прогнать тесты
+- `molecule init scenario --scenario-name default -r db -d vagrant` - создает заготовку для роли **db** с тестами на основе cookiecutter-шаблона
+* Тест открытого порта
+  ```python
+    def test_open_port(host):
+    assert host.socket("tcp://0.0.0.0:27017").is_listening
+  ```
+### Дополнительное задание *: TravisCI
+* не выполнил
+
 ## Lesson-12 HW ansible-3
 
 [![Build Status](https://travis-ci.com/otus-devops-2019-02/4babushkin_infra.svg?branch=ansible-3)](https://travis-ci.com/otus-devops-2019-02/4babushkin_infra)
@@ -15,7 +40,8 @@
 * Vault настроил ключ. Шифрую `ansible-vault encrypt environments/prod/credentials.yml` и `ansible-vault encrypt environments/stage/credentials.yml`
 
 
-### Дополнительное задание *:
+### Дополнительное задание *: 
+выполнил
 
 
 ## Lesson-11 HW ansible-2
@@ -159,4 +185,11 @@ app_frontend_ip = 35.195.23.92
 
 проверить можно тут http://146.148.24.75:9292
 
+** Что устанавливалось в процессе учебы
+gcp
+ansible
+terraform
+- 13
+[virtualenv и virtualenvwrapper](http://docs.python-guide.org/en/latest/dev/virtualenvs/)
+sudo pip install -r requirements.txt --ignore-installed
 

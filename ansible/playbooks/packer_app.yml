@@ -1,16 +1,6 @@
 ---
-- name: Install Ruby & Bundler for App
+- name: Install Ruby && Bundler
   hosts: all
-  #tags: app-tag
   become: true
-  tasks:
-    - name: apt install 
-      apt:
-        name: "{{ item }}"
-        state: present
-      with_items:
-      - python-apt
-      - ruby-full
-      - ruby-bundler
-      - build-essential
-...
+  roles:
+    - app

@@ -2,25 +2,5 @@
 - name: Install MongoDB 3.2
   hosts: all
   become: true
-  tasks:
-  # Добавим ключ репозитория для последующей работы с ним
-  - name: Add apk key of mongo
-    apt_key:
-      id: EA312927
-      keyserver: hkp://keyserver.ubuntu.com:80 
-
-  - name: Add reposytory
-    apt_repository:
-      repo: deb http://repo.mongodb.org/apt/ubuntu xenial/mongodb-org/3.2 multiverse
-      state: present
-
-  - name: Install mongodb-org
-    apt:
-      name: mongodb-org
-      state: present 
-
-  - name: enable service mongodb and ensure it is not masked
-    systemd:
-      name: mongod
-      enabled: yes
-...
+  roles:
+    - db
